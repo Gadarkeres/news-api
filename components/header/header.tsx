@@ -13,7 +13,6 @@ export function Header() {
       <div className="w-2/3 flex flex-col items-center justify-center gap-2">
         <FiltersOptions />
         <Filters />
-        <ButtonSearch />
       </div>
     </header>
   );
