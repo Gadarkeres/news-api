@@ -1,3 +1,5 @@
+import { ButtonSearch } from "../ui/button-custom";
+import { Filters } from "./filters";
 import { FiltersOptions } from "./filters-options";
 
 export function Header() {
@@ -8,8 +10,10 @@ export function Header() {
           News <strong className="text-azulPrimaria">API</strong>
         </h1>
       </div>
-      <div className="w-2/3 flex justify-center">
+      <div className="w-2/3 flex flex-col items-center justify-center gap-2">
         <FiltersOptions />
+        <Filters />
+        <ButtonSearch />
       </div>
     </header>
   );

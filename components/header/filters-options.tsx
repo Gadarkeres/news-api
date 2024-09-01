@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Label } from "../ui/label";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { parseAsString, useQueryState } from "nuqs";
+import { useCleanParams } from "@/utils/use-clean-params";
 
 export function FiltersOptions() {
   const [filter, setFilter] = useQueryState(
@@ -17,9 +18,6 @@ export function FiltersOptions() {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <div>
-        <h2 className="text-xl">Selecione uma opção de filtro de notícias</h2>
-      </div>
       <RadioGroup
         value={filter}
         onValueChange={setFilter}
