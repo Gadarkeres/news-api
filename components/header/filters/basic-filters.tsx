@@ -15,6 +15,7 @@ export function BasicFilters() {
   return (
     <div className="flex flex-col justify-center items-center m-5 gap-5">
       <Input
+        required
         value={title ? title : ""}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Pesquisar por título"

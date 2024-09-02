@@ -1,13 +1,13 @@
 "use client";
 
-import { parseAsString, useQueryState } from "nuqs";
 import { BasicFilters } from "./filters/basic-filters";
 import { AdvancedFilters } from "./filters/advanced-filters";
 import { ButtonSearch } from "../ui/button-custom";
+import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+import { useState } from "react";
 
 export function Filters() {
-  const [filter] = useQueryState("filter", parseAsString.withDefault("basic"));
-
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("submit");
@@ -17,18 +17,22 @@ export function Filters() {
       onSubmit={(e) => handleSubmit(e)}
       className="flex flex-col items-center gap-3"
     >
-      {filter === "basic" ? (
-        <>
-          <BasicFilters />
-          <ButtonSearch />
-        </>
+      <BasicFilters />
+
+      {showAdvanced && <AdvancedFilters />}
+      {showAdvanced ? (
+        <ChevronUpIcon
+          className="text-azulPrimaria cursor-pointer"
+          onClick={() => setShowAdvanced(!showAdvanced)}
+        />
       ) : (
-        <>
-          <BasicFilters />
-          <AdvancedFilters />
-          <ButtonSearch />
-        </>
+        <ChevronDownIcon
+          onClick={() => setShowAdvanced(!showAdvanced)}
+          className="text-azulPrimaria cursor-pointer"
+        />
       )}
+      <hr className="w-full" />
+      <ButtonSearch />
     </form>
   );
 }
