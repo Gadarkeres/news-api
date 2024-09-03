@@ -8,15 +8,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useFiltersAdvanced } from "./use-filters-advanced";
+import { Label } from "@/components/ui/label";
 
 export function AdvancedFilters() {
   const { word, setword, country, setCountry, order, setOrder } =
     useFiltersAdvanced();
 
   return (
-    <div className="flex flex-col justify-center items-center m-5 gap-5">
+    <div className="flex flex-col justify-center items-center m-5 gap-5 lg:flex-row">
       <Input
-        placeholder="Pesquisar por palavra chave no conteúdo"
+        id="word"
+        placeholder="Palavra-chave"
         value={word ? word : ""}
         onChange={(e) => setword(e.target.value)}
       />
