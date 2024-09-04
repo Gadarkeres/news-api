@@ -4,7 +4,7 @@ Esse é o lado front-end do projeto New API, responsável por renderizar a inter
 
 ## Objetivo
 
-O objetivo desse projeto é criar uma interface amigável para o usuário que possa consultar as notícias mais recentes.
+O objetivo desse projeto é criar uma interface amigável para o usuário que possa consultar as notícias mais recentes. Salvando os filtros diretamente na url.
 
 ## Tecnologias
 
@@ -20,6 +20,7 @@ O objetivo desse projeto é criar uma interface amigável para o usuário que po
 - Implementar o filtro de notícias
 - Implementar a ordenação de notícias
 - Implementar a busca de notícias
+  
 
 ## Licença
 
