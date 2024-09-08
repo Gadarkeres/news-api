@@ -1,5 +1,4 @@
 "use client";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -10,17 +9,10 @@ import {
 import { useFiltersBasic } from "./use-filters-basic";
 
 export function BasicFilters() {
-  const { word, category, setWord, setCategory } = useFiltersBasic();
+  const { category, setCategory } = useFiltersBasic();
 
   return (
     <div className="flex  justify-center items-center m-5 gap-5 ">
-      <Input
-        required
-        value={word ? word : ""}
-        onChange={(e) => setWord(e.target.value)}
-        placeholder="Pesquisar por palavras-chave"
-        id="word"
-      />
       <Select
         value={category || ""}
         onValueChange={(value) => setCategory(value)}

@@ -1,4 +1,4 @@
-"use client";
+"use server";
 
 import { NewsResponseDTO, RequestDTO } from "@/models/responde.model";
 import axios from "axios";

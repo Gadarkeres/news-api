@@ -9,8 +9,10 @@ import {
 } from "@/components/ui/card";
 import { NewsDTO } from "@/models/responde.model";
 import Link from "next/link";
+import { useNewsHook } from "./useNewsHook";
 
 export default function News({ news }: { news: NewsDTO }) {
+  const { categoryTranslations } = useNewsHook();
   return (
     <div className="my-5 w-3/4 lg:w-[27%]">
       <Card className="min-h-[450px] flex flex-col justify-between lg:min-h-[600px]">
@@ -39,10 +41,13 @@ export default function News({ news }: { news: NewsDTO }) {
             {new Date(Date.parse(news.published_at)).toLocaleDateString()}
           </p>
           <p className="text-sm text-gray-500">
-            {"Escrito por: " + news.author}
+            {"Escrito por: " + news.author ? news.author : "Desconhecido"}
           </p>
         </CardContent>
-        <CardFooter className="flex justify-end">
+        <CardFooter className="flex justify-between">
+          <p className="text-sm text-gray-500">
+            Categoría: {categoryTranslations[news.category] || news.category}
+          </p>
           <Link
             href={news.url}
             target="_blank"

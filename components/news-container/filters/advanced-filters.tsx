@@ -1,5 +1,4 @@
 "use client";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -10,14 +9,36 @@ import {
 import { useFiltersAdvanced } from "./use-filters-advanced";
 
 export function AdvancedFilters() {
-  const { country, order, language, setCountry, setOrder, setLanguage } =
+  const { country, order, setCountry, setOrder, setLanguage } =
     useFiltersAdvanced();
 
+  const handleCountryChange = (countryCode: string): void => {
+    let languageCode: string;
+    switch (countryCode) {
+      case "br":
+        languageCode = "pt";
+        break;
+      case "us":
+        languageCode = "en";
+        break;
+      case "jp":
+        languageCode = "ja";
+        break;
+      case "in":
+        languageCode = "hi";
+        break;
+      default:
+        languageCode = "und";
+    }
+
+    setCountry(countryCode);
+    setLanguage(languageCode);
+  };
   return (
     <div className="flex flex-col justify-center items-center m-5 gap-5 lg:flex-row">
       <Select
         value={country || ""}
-        onValueChange={(value) => setCountry(value)}
+        onValueChange={(value) => handleCountryChange(value)}
       >
         <SelectTrigger>
           <SelectValue placeholder="Selecione um País de origem" />
@@ -33,11 +54,15 @@ export function AdvancedFilters() {
             Japão
           </SelectItem>
           <SelectItem className="cursor-pointer" value="in">
-            India
+            Índia
           </SelectItem>
         </SelectContent>
       </Select>
-      <Select value={order || ""} onValueChange={(value) => setOrder(value)}>
+      <Select
+        value={order || ""}
+        onValueChange={(value) => setOrder(value)}
+        disabled={!country} // Desabilita o campo de ordenação se o país não for selecionado
+      >
         <SelectTrigger>
           <SelectValue placeholder="Ordenar por" />
         </SelectTrigger>
@@ -47,22 +72,6 @@ export function AdvancedFilters() {
           </SelectItem>
           <SelectItem className="cursor-pointer" value="published_desc">
             Data de publicação
-          </SelectItem>
-        </SelectContent>
-      </Select>
-      <Select
-        value={language || ""}
-        onValueChange={(value) => setLanguage(value)}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder="Selecione um idioma" />
-        </SelectTrigger>
-        <SelectContent className="bg-white text-black">
-          <SelectItem className="cursor-pointer" value="pt">
-            Portugues
-          </SelectItem>
-          <SelectItem className="cursor-pointer" value="en">
-            Inglês
           </SelectItem>
         </SelectContent>
       </Select>

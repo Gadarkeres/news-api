@@ -18,14 +18,13 @@ export interface NewsDTO {
   url: string;
   source: string;
   image: string;
-  category: string;
+  category: any;
   language: string;
   country: string;
   publishedAt: string;
 }
 
 export interface RequestDTO {
-  keywords: string | null;
   category: string | null;
   language: string;
   country: string;
