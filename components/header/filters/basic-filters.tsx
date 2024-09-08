@@ -10,16 +10,16 @@ import {
 import { useFiltersBasic } from "./use-filters-basic";
 
 export function BasicFilters() {
-  const { title, category, setTitle, setCategory } = useFiltersBasic();
+  const { word, category, setWord, setCategory } = useFiltersBasic();
 
   return (
-    <div className="flex flex-col justify-center items-center m-5 gap-5">
+    <div className="flex flex-col justify-center items-center m-5 gap-5 lg:w-full">
       <Input
         required
-        value={title ? title : ""}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Pesquisar por título"
-        id="title"
+        value={word ? word : ""}
+        onChange={(e) => setWord(e.target.value)}
+        placeholder="Pesquisar por palavras-chave"
+        id="word"
       />
       <Select
         value={category || ""}
@@ -29,7 +29,11 @@ export function BasicFilters() {
         <SelectTrigger>
           <SelectValue placeholder="Selecione um tema" />
         </SelectTrigger>
+
         <SelectContent className="bg-white text-black">
+          <SelectItem className="cursor-pointer" value="general">
+            Geral
+          </SelectItem>
           <SelectItem className="cursor-pointer" value="business">
             Negócios
           </SelectItem>
@@ -39,11 +43,11 @@ export function BasicFilters() {
           <SelectItem className="cursor-pointer" value="sports">
             Esportes
           </SelectItem>
-          <SelectItem className="cursor-pointer" value="general">
-            Geral
-          </SelectItem>
           <SelectItem className="cursor-pointer" value="technology">
             Tecnologia
+          </SelectItem>
+          <SelectItem className="cursor-pointer" value="science">
+            Ciências
           </SelectItem>
         </SelectContent>
       </Select>

@@ -3,16 +3,13 @@
 import { parseAsString, useQueryState } from "nuqs";
 
 export function useFiltersBasic() {
-  const [title, setTitle] = useQueryState(
-    "title",
-    parseAsString.withDefault("Bitcoin")
-  );
+  const [word, setWord] = useQueryState("word", parseAsString);
   const [category, setCategory] = useQueryState("category", parseAsString);
 
   return {
-    title,
+    word,
     category,
     setCategory,
-    setTitle,
+    setWord,
   };
 }
