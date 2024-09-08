@@ -13,7 +13,7 @@ export function BasicFilters() {
   const { word, category, setWord, setCategory } = useFiltersBasic();
 
   return (
-    <div className="flex flex-col justify-center items-center m-5 gap-5 lg:w-full">
+    <div className="flex  justify-center items-center m-5 gap-5 ">
       <Input
         required
         value={word ? word : ""}
